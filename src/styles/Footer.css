@@ -1,0 +1,130 @@
+.footer-main {
+    width: 100%;
+    background-color: #1a1a1a; 
+    padding: 50px 0 20px 0;
+    color: #ccc;
+    font-size: 0.9rem;
+    border-top: 1px solid #333;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+
+.footer-links-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+
+.footer-left-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 25%; 
+    min-width: 150px;
+}
+
+
+.footer-logo {
+    width: 100px;
+    height: auto;
+}
+
+.copyright-text {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+
+.footer-right-categories {
+    display: flex;
+    gap: 80px; 
+    width: 75%; 
+    justify-content: flex-end; 
+}
+
+.category-section {
+    flex-shrink: 0; 
+}
+
+.category-title {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.category-columns {
+    display: flex;
+    gap: 20px; 
+}
+
+.footer-column-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column-list li {
+    margin-bottom: 8px;
+    white-space: nowrap; 
+}
+
+.footer-link {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+}
+
+.footer-link:hover {
+    color: white;
+}
+
+
+@media (max-width: 992px) {
+    .footer-right-categories {
+        gap: 30px;
+        width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-links-wrapper {
+        flex-direction: column; 
+    }
+
+    .footer-left-info {
+        width: 100%;
+        margin-bottom: 30px;
+        align-items: center; 
+    }
+    .footer-logo {
+        width: 120px;
+    }
+    
+    .footer-right-categories {
+        width: 100%;
+        flex-direction: column; 
+        gap: 30px;
+        justify-content: flex-start;
+    }
+    
+    .category-section {
+        border-top: 1px solid #333;
+        padding-top: 20px;
+    }
+
+    .category-columns {
+        flex-wrap: wrap; 
+        justify-content: space-between;
+    }
+    
+    .footer-column-list {
+        width: 45%; 
+    }
+}

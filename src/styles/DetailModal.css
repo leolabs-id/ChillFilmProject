@@ -1,0 +1,762 @@
+/* DetailModal.css - Lengkap dengan semua elemen */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 1000;
+    padding: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.detail-modal-card {
+    width: 100%;
+    max-width: 850px;
+    background: #181818;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    animation: modalFadeIn 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    min-height: 100vh;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER SECTION */
+.modal-header {
+    height: 65vh;
+    min-height: 450px;
+    max-height: 600px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, 
+        rgba(0,0,0,0.8) 0%, 
+        rgba(0,0,0,0.4) 40%, 
+        transparent 100%);
+}
+
+.modal-close-btn {
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    touch-action: manipulation;
+}
+
+.modal-close-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.05);
+}
+
+.header-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.volume-btn, .info-btn {
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.2s;
+}
+
+.volume-btn:hover, .info-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.05);
+}
+
+/* HEADER INFO SECTION */
+.header-info {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+    color: white;
+}
+
+.modal-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0 0 20px 0;
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.8);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+
+/* METADATA ROW - Lengkap dengan semua info */
+.metadata-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+/* Rating Stars */
+.rating-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 165, 0, 0.2);
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 165, 0, 0.3);
+}
+
+.star-icon {
+    color: #FFA500;
+    font-size: 1.2rem;
+}
+
+.rating-value {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Year/Runtime/Episode Info */
+.year-runtime {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 15px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.year-runtime-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1rem;
+    opacity: 0.95;
+}
+
+.year-runtime-item svg {
+    opacity: 0.7;
+}
+
+/* Age Rating Badge */
+.age-rating-badge {
+    background: rgba(229, 9, 20, 0.9);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* HD Badge */
+.hd-badge {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* GENRE TAGS */
+.genre-section {
+    margin-bottom: 25px;
+}
+
+.genre-section h4 {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    margin: 0 0 10px 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.genre-tags-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.genre-tag {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.2s;
+}
+
+.genre-tag:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+/* BODY SECTION */
+.modal-body {
+    padding: 35px 40px;
+    color: white;
+}
+
+/* ACTION BUTTONS */
+.action-buttons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.btn-play {
+    background: white;
+    color: black;
+    border: none;
+    padding: 16px 35px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-height: 56px;
+    flex-shrink: 0;
+}
+
+.btn-play:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: scale(1.05);
+}
+
+.btn-play-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 16px 25px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-height: 56px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-play-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.secondary-actions {
+    display: flex;
+    gap: 15px;
+    margin-left: auto;
+}
+
+.icon-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    touch-action: manipulation;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.icon-btn.active {
+    background: #e50914;
+    border-color: #e50914;
+}
+
+/* SYNOPSIS SECTION */
+.overview-section {
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.overview-section h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+    color: #fff;
+}
+
+.overview-text {
+    line-height: 1.7;
+    opacity: 0.9;
+    font-size: 1.05rem;
+    max-width: 800px;
+}
+
+/* DETAILED INFO SECTION */
+.detailed-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.info-column h4 {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin: 0 0 15px 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-item {
+    margin-bottom: 12px;
+    display: flex;
+}
+
+.info-label {
+    min-width: 120px;
+    opacity: 0.7;
+    font-size: 0.95rem;
+}
+
+.info-value {
+    flex: 1;
+    font-weight: 500;
+}
+
+/* CAST SECTION */
+.cast-section {
+    margin-bottom: 35px;
+}
+
+.cast-section h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+}
+
+.cast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.cast-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.cast-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.cast-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.cast-info {
+    padding: 12px;
+}
+
+.cast-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+.cast-character {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* TRAILER SECTION */
+.trailer-section {
+    margin-bottom: 40px;
+}
+
+.trailer-section h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+}
+
+.trailer-embed {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 56.25%;
+    background: #000;
+}
+
+.trailer-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.trailer-fallback {
+    padding: 60px 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* RECOMMENDATIONS */
+.recommendations-section {
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recommendations-section h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 25px 0;
+}
+
+/* Loading & Error States */
+.modal-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    padding: 40px;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(255,255,255,0.1);
+    border-top: 5px solid #e50914;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 25px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.modal-error {
+    background: rgba(229, 9, 20, 0.1);
+    border: 1px solid rgba(229, 9, 20, 0.3);
+    padding: 40px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    max-width: 500px;
+    margin: 100px auto;
+}
+
+/* ==================== MEDIA QUERIES ==================== */
+
+/* Tablet (1024px dan bawah) */
+@media (max-width: 1024px) {
+    .detail-modal-card {
+        max-width: 95%;
+    }
+    
+    .modal-header {
+        height: 55vh;
+        min-height: 400px;
+    }
+    
+    .modal-title {
+        font-size: 2.8rem;
+    }
+    
+    .modal-body {
+        padding: 30px;
+    }
+}
+
+/* Tablet (768px dan bawah) */
+@media (max-width: 768px) {
+    .modal-header {
+        height: 50vh;
+        min-height: 350px;
+    }
+    
+    .header-info {
+        left: 25px;
+        right: 25px;
+        bottom: 30px;
+    }
+    
+    .modal-title {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+    
+    .metadata-row {
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .modal-body {
+        padding: 25px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .btn-play, .btn-play-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .secondary-actions {
+        margin-left: 0;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .detailed-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .cast-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 12px;
+    }
+}
+
+/* Mobile (480px dan bawah) */
+@media (max-width: 480px) {
+    .modal-header {
+        height: 45vh;
+        min-height: 300px;
+    }
+    
+    .header-info {
+        left: 20px;
+        right: 20px;
+        bottom: 25px;
+    }
+    
+    .modal-title {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+    }
+    
+    .metadata-row {
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+    
+    .rating-container, .year-runtime, .age-rating-badge {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .modal-body {
+        padding: 20px;
+    }
+    
+    .overview-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 15px;
+    }
+    
+    .info-label {
+        min-width: auto;
+        opacity: 0.8;
+    }
+    
+    .cast-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+    }
+    
+    .cast-image {
+        height: 140px;
+    }
+}
+
+/* Small Mobile (360px dan bawah) */
+@media (max-width: 360px) {
+    .modal-header {
+        height: 40vh;
+        min-height: 280px;
+    }
+    
+    .header-overlay {
+        padding: 15px;
+    }
+    
+    .header-info {
+        left: 15px;
+        right: 15px;
+        bottom: 20px;
+    }
+    
+    .modal-title {
+        font-size: 1.5rem;
+    }
+    
+    .metadata-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .genre-tags-container {
+        gap: 8px;
+    }
+    
+    .genre-tag {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .modal-body {
+        padding: 15px;
+    }
+    
+    .icon-btn {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Landscape Mode untuk Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .modal-backdrop {
+        padding: 10px 0;
+    }
+    
+    .detail-modal-card {
+        max-height: 95vh;
+        overflow-y: auto;
+    }
+    
+    .modal-header {
+        height: 80vh;
+        min-height: 200px;
+    }
+    
+    .modal-body {
+        padding: 20px;
+    }
+}
+
+/* Safe Area untuk iPhone */
+@supports (padding: max(0px)) {
+    .modal-backdrop {
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+        padding-top: max(0px, env(safe-area-inset-top));
+        padding-bottom: max(0px, env(safe-area-inset-bottom));
+    }
+    
+    .header-overlay {
+        padding-top: max(20px, calc(env(safe-area-inset-top) + 10px));
+    }
+}
+
+/* Touch Optimizations */
+button, .icon-btn, .modal-close-btn {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+button:focus-visible, .icon-btn:focus-visible {
+    outline: 2px solid #e50914;
+    outline-offset: 2px;
+}
+
+/* Scrollbar Styling */
+.detail-modal-card::-webkit-scrollbar {
+    width: 8px;
+}
+
+.detail-modal-card::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.detail-modal-card::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.detail-modal-card::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}

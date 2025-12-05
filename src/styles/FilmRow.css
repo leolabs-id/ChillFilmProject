@@ -1,0 +1,746 @@
+/* ============ MAIN CONTAINERS ============ */
+.film-row-container {
+    margin: 30px 0;
+}
+
+.row-title {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    padding-left: 40px;
+    font-weight: 600;
+}
+
+.row-title-special {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    padding-left: 40px;
+    font-weight: 600;
+}
+
+.film-row-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* ============ SCROLL AREAS ============ */
+.film-row-scroll-area {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    gap: 15px;
+    margin-left: 40px;
+    margin-right: 40px;
+    width: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+}
+
+.film-row-scroll-area::-webkit-scrollbar {
+    display: none;
+}
+
+.landscape-row-scroll {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    width: 100%;
+    gap: 15px;
+    margin-right: 40px;
+    margin-left: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.landscape-row-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* ============ SCROLL BUTTONS ============ */
+.scroll-btn {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+    transform: translateY(-50%);
+    opacity: 1;
+    transition: opacity 0.3s, background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+}
+
+.scroll-btn-left {
+    left: 10px;
+}
+
+.scroll-btn-right {
+    right: 10px;
+}
+
+.film-row-wrapper:hover .scroll-btn {
+    opacity: 1;
+}
+
+.scroll-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.scroll-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ============ FILM CARD (VERTICAL) ============ */
+.film-card {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, z-index 0.3s ease;
+    flex-shrink: 0;
+    width: 200px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.film-card:hover {
+    transform: scale(1.15);
+    z-index: 500;
+}
+
+.film-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.film-card:hover .film-poster {
+    transform: scale(1.05);
+}
+
+.card-info-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    padding: 15px 10px 5px 10px;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.film-card:hover .card-info-overlay {
+    opacity: 1;
+}
+
+.card-title {
+    font-size: 0.9rem;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    color: white;
+}
+
+.card-rating {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: gold;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.star-icon {
+    margin-right: 4px;
+}
+
+/* ============ LANDSCAPE CARD (HORIZONTAL) ============ */
+.landscape-card {
+    flex-shrink: 0;
+    width: 350px;
+    height: 180px;
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
+}
+
+.landscape-card.hovered {
+    transform: scale(1.2);
+    z-index: 1000;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+.card-image-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.landscape-backdrop {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.landscape-card.hovered .landscape-backdrop {
+    transform: scale(1.1);
+}
+
+/* ============ LANDSCAPE CARD - PROGRESS BAR ============ */
+.progress-bar-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    z-index: 5; /* Above everything */
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #e50914;
+    border-radius: 0; /* No radius for Netflix style */
+    transition: width 0.3s ease;
+}
+
+/* ============ LANDSCAPE CARD - DEFAULT CONTENT (non-hover) ============ */
+.default-content {
+    position: absolute;
+    bottom: 8px;
+    left: 12px;
+    right: 12px;
+    z-index: 3;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.landscape-card.hovered .default-content {
+    opacity: 0;
+}
+
+.card-info-lanscape {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-title-lanscape {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-rating-lanscape {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.85rem;
+    color: gold;
+    font-weight: 500;
+}
+
+.card-rating-lanscape svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* ============ LANDSCAPE CARD - HOVER DETAILS OVERLAY ============ */
+.hover-details-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.85) 20%,
+        rgba(0, 0, 0, 0.5) 50%,
+        transparent 80%
+    );
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 4;
+    box-sizing: border-box;
+}
+
+.landscape-card.hovered .hover-details-overlay {
+    opacity: 1;
+}
+
+/* Hover Header */
+.hover-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+}
+
+.play-overlay-btn {
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    margin-top: 2px;
+}
+
+.play-overlay-btn:hover {
+    transform: scale(1.1);
+    background: #f0f0f0;
+}
+
+.play-overlay-btn svg {
+    width: 18px;
+    height: 18px;
+    margin-left: 2px; /* Untuk centering play icon */
+}
+
+.hover-main-info {
+    flex: 1;
+    min-width: 0; /* Untuk mencegah overflow */
+}
+
+.hover-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-height: 2.4em;
+}
+
+.hover-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.metadata-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.metadata-item svg {
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+    opacity: 0.8;
+}
+
+.metadata-item.year {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2px 6px;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.75rem;
+}
+
+/* Hover Genres */
+.hover-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.genre-tag {
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    white-space: nowrap;
+    line-height: 1;
+}
+
+/* Match Info */
+.hover-match-info {
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.match-percent {
+    color: #46d369;
+    font-weight: 700;
+    font-size: 0.8rem;
+    background: rgba(70, 211, 105, 0.08);
+    padding: 3px 8px;
+    border-radius: 3px;
+    border: 1px solid rgba(70, 211, 105, 0.2);
+    display: inline-block;
+}
+
+/* Hover Actions */
+.hover-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-top: auto; /* Push to bottom */
+}
+
+
+.action-btn {
+    flex: 1;
+    padding: 6px 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+/* ============ SPACING UTILITIES ============ */
+.hover-spacer {
+    flex: 1;
+    min-height: 8px;
+}
+
+
+.add-to-list {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.add-to-list:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.rate {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.rate:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.info {
+    background: rgba(229, 9, 20, 0.8);
+    color: white;
+    border: 1px solid #e50914;
+}
+
+.info:hover {
+    background: #e50914;
+}
+
+/* ============ OLD LANDSCAPE CARD STYLES (untuk backward compatibility) ============ */
+/* Styles ini hanya untuk memastikan kode lama masih bekerja */
+.card-details-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 10px 15px 5px 15px;
+    opacity: 1;
+}
+
+.landscape-card:hover .play-overlay-btn {
+    opacity: 1;
+}
+
+/* ============ RESPONSIVE DESIGN ============ */
+@media (max-width: 768px) {
+    .row-title,
+    .row-title-special {
+        padding-left: 15px;
+        font-size: 1.3rem;
+    }
+    
+    .film-row-scroll-area,
+    .landscape-row-scroll {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .film-row-wrapper {
+        padding: 0 10px;
+    }
+    
+    .scroll-btn {
+        display: none;
+    }
+
+    /* Film Card Responsive */
+    .film-card {
+        width: 150px;
+        height: 225px;
+    }
+    
+    .film-card:hover {
+        transform: scale(1);
+        z-index: auto;
+    }
+    
+    .film-card .card-info-overlay {
+        opacity: 1;
+    }
+
+    /* Landscape Card Responsive */
+    .landscape-card {
+        width: 280px;
+        height: 150px;
+    }
+    
+    .landscape-card.hovered {
+        transform: scale(1.05);
+    }
+    
+    .hover-details-overlay {
+        padding: 12px;
+    }
+    
+    .hover-title {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+    
+    .metadata-item {
+        font-size: 0.75rem;
+        gap: 3px;
+    }
+    
+    .metadata-item svg {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .metadata-item.year {
+        padding: 2px 5px;
+        font-size: 0.7rem;
+    }
+    
+    .genre-tag {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+    
+    .match-percent {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+    }
+    
+    .action-btn {
+        padding: 5px 6px;
+        font-size: 0.7rem;
+    }
+    
+    .play-overlay-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .play-overlay-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .card-details-content {
+        padding: 5px 10px;
+    }
+    
+    .card-rating-lanscape {
+        font-size: 0.7rem;
+    }
+
+    .card-title-lanscape {
+        font-size: 0.9rem;
+    }
+
+    .progress-bar-container {
+        height: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .landscape-card {
+        width: 240px;
+        height: 130px;
+    }
+    
+    .hover-details-overlay {
+        padding: 10px;
+    }
+    
+    .hover-title {
+        font-size: 0.9rem;
+        -webkit-line-clamp: 2;
+        max-height: 2.2em;
+    }
+    
+    .hover-genres {
+        display: none; /* Hide genres on very small screens */
+    }
+    
+    .hover-actions {
+        flex-direction: row;
+        gap: 6px;
+    }
+    
+    .action-btn {
+        padding: 4px 5px;
+        font-size: 0.65rem;
+    }
+    
+    .play-overlay-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .play-overlay-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* ============ TOUCH DEVICE SUPPORT ============ */
+@media (hover: none) and (pointer: coarse) {
+    .landscape-card.hovered {
+        transform: none;
+    }
+    
+    .hover-details-overlay {
+        opacity: 1;
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.7) 50%,
+            transparent 100%
+        );
+    }
+    
+    .default-content {
+        display: none;
+    }
+    
+    .film-card:hover {
+        transform: none;
+    }
+    
+    .film-card .card-info-overlay {
+        opacity: 1;
+    }
+}
+
+/* ============ ANIMATION DELAYS ============ */
+.landscape-card {
+    animation-delay: 0.1s;
+}
+
+.landscape-card:not(.hovered) {
+    transition-delay: 0.1s;
+}
+
+/* ============ Z-INDEX LAYERING ============ */
+.landscape-row-scroll {
+    position: relative;
+    z-index: 1;
+}
+
+.landscape-card {
+    position: relative;
+    z-index: 1;
+}
+
+.landscape-card.hovered {
+    z-index: 1000;
+}
+
+.film-row-scroll-area {
+    position: relative;
+    z-index: 1;
+}
+
+.film-card {
+    position: relative;
+    z-index: 1;
+}
+
+.film-card:hover {
+    z-index: 500;
+}
+
+/* ============ ACCESSIBILITY ============ */
+.scroll-btn:focus,
+.play-overlay-btn:focus,
+.action-btn:focus,
+.film-card:focus {
+    outline: 2px solid #e50914;
+    outline-offset: 2px;
+}
+
+/* ============ PERFORMANCE OPTIMIZATIONS ============ */
+.landscape-backdrop,
+.film-poster {
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
